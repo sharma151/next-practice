@@ -1,7 +1,7 @@
 const Home: React.FC = () => {
   return (
     <>
-      <h1>hello world my next app</h1>
+      <h1>User Home page</h1>
     </>
   );
 };
