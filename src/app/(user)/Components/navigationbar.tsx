@@ -23,6 +23,12 @@ const Navbar: React.FC = () => {
             <Link href="/contact" passHref>
               <p className="text-gray-300 hover:text-white">Contact</p>
             </Link>
+            <Link href="/clientcomp" passHref>
+              <p className="text-gray-300 hover:text-white">Clientcomp</p>
+            </Link>
+            <Link href="/servercomp" passHref>
+              <p className="text-gray-300 hover:text-white">servercomp</p>
+            </Link>
           </div>
         </div>
       </nav>
