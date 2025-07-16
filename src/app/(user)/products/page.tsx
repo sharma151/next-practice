@@ -1,4 +1,3 @@
-"use Client";
 // app/products/page.tsx or similar (server component) example of searchParams
 import PageList from "./pageList";
 interface Props {
