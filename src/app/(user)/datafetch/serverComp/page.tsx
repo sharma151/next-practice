@@ -24,20 +24,24 @@ const dataFetchServer = async (props: any) => {
     accuracy = "Moderate";
   }
 
-  const themeColor = isMale ? "blue" : "pink";
+  // Correct Tailwind classes using conditional logic
+  const cardColor = isMale
+    ? "bg-blue-100 border-blue-400"
+    : "bg-pink-100 border-pink-400";
+  const textColor = isMale ? "text-blue-500" : "text-pink-500";
+  const barColor = isMale ? "bg-blue-500" : "bg-pink-500";
+  const badgeColor = isMale ? "bg-blue-600" : "bg-pink-600";
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50 px-4">
-      <div
-        className={`w-full max-w-sm rounded-xl shadow-lg bg-${themeColor}-100 border border-${themeColor}-300`}
-      >
+      <div className={`w-full max-w-sm rounded-xl shadow-lg ${cardColor}`}>
         <div className="flex flex-col items-center px-6 py-8">
           {/* Profile */}
           <div className="w-20 h-20 rounded-full bg-white shadow-md border border-gray-300 flex items-center justify-center text-2xl font-bold text-gray-600">
             {res.name?.[0]?.toUpperCase()}
           </div>
           <h2 className="text-2xl font-semibold mt-4 capitalize">{res.name}</h2>
-          <p className={`text-${themeColor}-800 font-medium`}>
+          <p className={`${textColor} font-medium`}>
             {res.gender?.toUpperCase()}
           </p>
 
@@ -48,7 +52,7 @@ const dataFetchServer = async (props: any) => {
             </label>
             <div className="w-full bg-gray-200 rounded-full h-4">
               <div
-                className={`bg-${themeColor}-500 h-4 rounded-full`}
+                className={`${barColor} h-4 rounded-full`}
                 style={{ width: `${probability}%` }}
               ></div>
             </div>
@@ -64,7 +68,7 @@ const dataFetchServer = async (props: any) => {
 
           {/* Accuracy */}
           <div
-            className={`mt-2 px-3 py-1 rounded-full text-sm font-semibold text-white bg-${themeColor}-600`}
+            className={`mt-2 px-3 py-1 rounded-full text-sm font-semibold text-white ${badgeColor}`}
           >
             Accuracy: {accuracy}
           </div>
