@@ -12,6 +12,7 @@ type Joke = {
 const RandomJokes = () => {
   const [joke, setJoke] = useState<Joke | null>(null);
   const [loading, setLoading] = useState(false);
+  const [showJokes, setShowJokes] = useState(true);
 
   const fetchRandomJoke = async () => {
     try {
@@ -41,9 +42,31 @@ const RandomJokes = () => {
         {joke ? (
           <>
             <p className="text-gray-700 text-lg mb-2">{joke.setup}</p>
-            <p className="text-gray-900 font-semibold text-lg mb-4">
-              {joke.punchline}
-            </p>
+            {showJokes ? (
+              <>
+                <p className="text-gray-900 font-semibold text-xl mb-4">
+                  {joke.punchline}
+                </p>
+                <button
+                  onClick={() => {
+                    setShowJokes(false);
+                  }}
+                  className="mt-6 px-4 py-2 rounded bg-amber-400 text-white transition disabled:opacity-50 cursor-pointer"
+                >
+                  Hide Punchline
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={() => {
+                  setShowJokes(true);
+                }}
+                className="mt-6  mb-2 px-4 py-2 rounded bg-amber-400 text-white transition disabled:opacity-50 cursor-pointer"
+              >
+                Reveal Punchline
+              </button>
+            )}
+
             <p className="text-sm text-gray-400">Joke ID: {joke.id}</p>
           </>
         ) : (
@@ -52,7 +75,7 @@ const RandomJokes = () => {
         <button
           onClick={fetchRandomJoke}
           disabled={loading}
-          className="mt-6 px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition disabled:opacity-50"
+          className="mt-6 px-2 py-2 text-xs rounded bg-blue-600 text-white hover:bg-blue-700 transition disabled:opacity-50 cursor-pointer"
         >
           {loading ? "Loading..." : "Get New Joke"}
         </button>
